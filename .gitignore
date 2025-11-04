@@ -10,6 +10,10 @@ typechain-types/
 coverage/
 coverage.json
 
+# Solidity dependency cache (e.g., VS Code Solidity, dependency remappings)
+.deps/
+**/.deps/
+
 # Hardhat deployments or local networks
 .openzeppelin/
 .env.local
