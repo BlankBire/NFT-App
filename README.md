@@ -73,7 +73,7 @@ npm run deploy:storage
 1. Create `BE/.env` with:
 
 ```
-SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/<YOUR_INFURA_KEY>
+SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<YOUR_ALCHEMY_KEY>
 PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 ETHERSCAN_API_KEY=<YOUR_ETHERSCAN_API_KEY>
 ```
