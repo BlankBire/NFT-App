@@ -1,0 +1,24 @@
+{
+  "name": "my-nft-backend",
+  "version": "1.0.0",
+  "description": "Hardhat project for smart contract backend",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy:storage": "hardhat run scripts/deploy-storage.js --network localhost",
+    "deploy:mynft": "hardhat run scripts/deploy-mynft.js --network localhost",
+    "deploy:mynft:sepolia": "hardhat run scripts/deploy-mynft.js --network sepolia",
+    "verify:mynft:sepolia": "hardhat verify --network sepolia"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "chai": "^4.3.7",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.9.0",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3"
+  }
+}

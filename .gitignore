@@ -1,0 +1,59 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Hardhat / Solidity build
+artifacts/
+cache/
+build-info/
+typechain-types/
+coverage/
+coverage.json
+
+# Hardhat deployments or local networks
+.openzeppelin/
+.env.local
+
+# Env
+.env
+.env.*
+**/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+Thumbs.db
+
+# dependencies
+/.pnp
+.pnp.js
+
+# production
+/build
+
+# Frontend build outputs
+FE/build/
+FE/dist/
+FE/.parcel-cache/
+FE/.next/
+
+# Backend build outputs
+BE/build/
+
+# Misc developer files
+*.log
+npm-debug.log*
