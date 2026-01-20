@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# My NFT Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Phần này của dự án chứa mã nguồn cho giao diện ứng dụng React (Frontend), cho phép người dùng tương tác với Smart Contract để mint và quản lý NFT.
 
-## Available Scripts
+## Công nghệ sử dụng
 
-In the project directory, you can run:
+- **React:** Thư viện JavaScript để xây dựng giao diện người dùng.
+- **Ethers.js (v5.7):** Thư viện để tương tác với mạng Ethereum.
+- **Vanilla CSS:** Để tạo kiểu cho ứng dụng với giao diện hiện đại và tối giản.
 
-### `npm start`
+## Khởi chạy ứng dụng
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Đảm bảo đang ở trong thư mục `FE/`:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Cài đặt phụ thuộc:**
+   ```powershell
+   npm install
+   ```
 
-### `npm test`
+2. **Cấu hình môi trường:**
+   Tạo tệp `.env` dựa trên hướng dẫn bên dưới.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Chạy ứng dụng ở chế độ phát triển:**
+   ```powershell
+   npm start
+   ```
+   Ứng dụng sẽ chạy tại [http://localhost:3000](http://localhost:3000).
 
-### `npm run build`
+## Cấu hình biến môi trường (.env)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ứng dụng yêu cầu một số biến môi trường để hoạt động chính xác. Hãy tạo tệp `.env` trong thư mục `FE/` với nội dung sau:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+REACT_APP_CONTRACT_ADDRESS="ĐỊA_CHỈ_HỢP_ĐỒNG_ĐÃ_TRIỂN_KHAI"
+REACT_APP_METADATA_URI="LINK_METADATA_IPFS_MẶC_ĐỊNH"
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> [!IMPORTANT]
+> Phải khởi động lại server (`npm start`) sau khi thay đổi tệp `.env`.
 
-### `npm run eject`
+## Cấu trúc mã nguồn
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `src/App.js`: Thành phần chính chứa logic kết nối ví và tương tác với contract.
+- `src/utils/MyNFT.json`: Tệp chứa ABI của Smart Contract.
+- `src/App.css`: Chứa các quy tắc CSS cho giao diện người dùng.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Chức năng chính
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Connect Wallet:** Cho phép người dùng kết nối với ví MetaMask.
+- **Mint NFT:** Người dùng có thể thanh toán một khoản phí nhỏ để đúc NFT mới.
+- **View NFT Info:** Xem thông tin chi tiết của một NFT dựa trên Token ID.
+- **My Collection:** Hiển thị danh sách tất cả các NFT mà người dùng đang sở hữu.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

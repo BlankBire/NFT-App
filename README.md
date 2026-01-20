@@ -1,139 +1,92 @@
-# My NFT App (Monorepo)
+# My NFT Application
 
-A simple monorepo that contains:
+Dự án này là một ứng dụng NFT đơn giản được xây dựng theo mô hình monorepo, bao gồm cả phần Backend (Smart Contract) và Frontend (React).
 
-- BE (Hardhat + Ethers v6): Smart contracts, tests, and deployment scripts
-- FE (React): Minimal UI that can consume the deployed contract
+## Tổng quan dự án
 
-This README is for the entire project at the repository root.
+Dự án cho phép người dùng mint NFT và xem bộ sưu tập NFT thông qua một giao diện web trực quan.
 
-## Prerequisites
+- **BE (Backend):** Sử dụng Hardhat và Ethers.js (v6) để phát triển, kiểm thử và triển khai Smart Contract.
+- **FE (Frontend):** Ứng dụng React kết nối với Smart Contract để thực hiện các chức năng mint và xem bộ sưu tập NFT.
 
-- Node.js 18+ and npm
-- Windows PowerShell (commands below are PowerShell-friendly)
-- Optional: MetaMask and a Sepolia testnet account if you plan to deploy to testnet
+## Cấu trúc thư mục
 
-## Project structure
-
-```
+```text
 my-nft-app/
-  BE/                 # Hardhat workspace (Solidity contracts, tests, scripts)
-  FE/                 # React app (frontend)
-  .gitignore          # Root ignore for both FE and BE
-  README.md           # This file
+├── BE/                 # Workspace Hardhat (Smart Contracts, Tests, Scripts)
+├── FE/                 # Ứng dụng React (Giao diện người dùng)
+├── .gitignore          # Cấu hình bỏ qua các tệp không cần thiết cho Git
+└── README.md           # Tệp hướng dẫn chính của dự án
 ```
 
-BE highlights:
+## Yêu cầu hệ thống
+- **Node.js:** Phiên bản 18 trở lên.
+- **npm:** Trình quản lý gói đi kèm với Node.js.
+- **MetaMask:** Tiện ích mở rộng trình duyệt và một tài khoản có sẵn trên mạng Sepolia (nếu muốn triển khai lên testnet).
 
-- Solidity: 0.8.30
-- Tooling: hardhat ^2.19, @nomicfoundation/hardhat-toolbox ^4, ethers ^6
-- OZ Contracts: ^4.9.3
-- Tests (Mocha/Chai) under `BE/tests`
+## Cài đặt nhanh
 
-## Setup
-
-Install dependencies for both workspaces.
+Để cài đặt tất cả các phụ thuộc cho cả Frontend và Backend, hãy chạy các lệnh sau:
 
 ```powershell
-# From repo root
-Set-Location -Path 'BE'
+# Di chuyển vào thư mục Backend và cài đặt
+cd BE
 npm install
 
-Set-Location -Path '..\FE'
+# Di chuyển vào thư mục Frontend và cài đặt
+cd ../FE
 npm install
 
-# Go back to repo root when done
-Set-Location -Path '..'
+# Trở lại thư mục gốc
+cd ..
 ```
 
 ## Backend (Hardhat)
 
-### Useful scripts
+Mọi thao tác liên quan đến Smart Contract được thực hiện trong thư mục `BE/`.
 
-Run these from `BE/`:
+### Các lệnh hữu ích:
 
 ```powershell
-# Compile
+# Biên dịch Smart Contract
 npm run compile
 
-# Run tests
+# Chạy unit test
 npm test
 
-# Start a local Hardhat node
+# Khởi động node Hardhat cục bộ
 npm run node
 
-# Deploy contracts to local node (in another terminal)
-# Make sure you have the local node running first
+# Triển khai hợp đồng lên node cục bộ
 npm run deploy:mynft
-npm run deploy:storage
 ```
 
-### Deploy to Sepolia
-
-1. Create `BE/.env` with:
-
-```
-SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<YOUR_ALCHEMY_KEY>
-PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
-ETHERSCAN_API_KEY=<YOUR_ETHERSCAN_API_KEY>
-```
-
-2. Deploy MyNFT to Sepolia:
-
-```powershell
-Set-Location -Path 'BE'
-npm run deploy:mynft:sepolia
-```
-
-The script will print the deployed address. Example (from a previous run):
-
-```
-MyNFT deployed at: <DEPLOYED_ADDRESS>
-```
-
-3. (Optional) Verify on Etherscan after a few minutes:
-
-```powershell
-npm run verify:mynft:sepolia -- <DEPLOYED_ADDRESS>
-```
+*Chi tiết xem thêm tại [BE README](file:///d:/my-nft-app/BE/README.md).*
 
 ## Frontend (React)
 
-Run from `FE/`:
+Phần giao diện người dùng được quản lý trong thư mục `FE/`.
+
+### Khởi chạy:
 
 ```powershell
+cd FE
 npm start
 ```
 
-If your FE needs the contract address, add a small config file like `FE/src/utils/addresses.js`:
+*Chi tiết xem thêm tại [FE README](file:///d:/my-nft-app/FE/README.md).*
 
-```js
-export const MYNFT_ADDRESS = "<DEPLOYED_ADDRESS>";
-```
+## Triển khai lên mạng thử nghiệm (Sepolia)
 
-The ABI is already provided at `FE/src/utils/MyNFT.json`. If you recompile contracts and ABI changes, re-copy the fresh artifact as needed.
+1. Tạo tệp `BE/.env` và cấu hình các thông số cần thiết (`RPC_URL`, `PRIVATE_KEY`).
+2. Triển khai MyNFT lên Sepolia:
+   ```powershell
+   cd BE
+   npm run deploy:mynft:sepolia
+   ```
 
-## Git & GitHub
+## Lưu ý quan trọng
 
-This project is now a single Git repository at the root (FE is not a nested repo anymore).
-
-To push everything to GitHub (replace the URL with your repo):
-
-```powershell
-Set-Location -Path 'D:\my-nft-app'
-git branch -M main
-git remote add origin https://github.com/<user>/<repo>.git
-git push -u origin main
-```
-
-## Troubleshooting
-
-- PowerShell command separators like `||` are not supported; run commands separately or use `if (...) { ... }` blocks.
-- Line ending warnings (LF↔CRLF) on Windows are harmless. You can add a `.gitattributes` to normalize line endings if desired.
-- Hardhat tests failing after dependency updates? Reinstall in `BE/` and ensure `ethers` is v6 as expected.
-
-## Notes
-
-- Contracts live in `BE/contracts`. Main NFT contract is `MyNFT.sol`.
-- Local development uses the Hardhat network; testnet deployment uses Sepolia via `.env` values.
-- Keep secrets (private keys, RPC URLs) out of Git. `.gitignore` already excludes `.env` files.
+- Luôn giữ bí mật các khóa riêng tư (`PRIVATE_KEY`) và API keys.
+- Tệp `.env` đã được cấu hình trong `.gitignore` để tránh bị đẩy lên GitHub.
+- Sau khi triển khai Smart Contract mới, đừng quên cập nhật địa chỉ hợp đồng trong tệp `.env` của Frontend.

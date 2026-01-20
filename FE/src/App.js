@@ -4,11 +4,8 @@ import { ethers } from "ethers";
 import MyNFT_ABI from "./utils/MyNFT.json";
 import "./App.css";
 
-// ==================================================================
-const contractAddress = "0xD91111483d83c606E29C33554E6C3346C0Ac1058";
-const metadataURI =
-  "https://gateway.pinata.cloud/ipfs/bafkreibthvhelaiczna3slxe7j3to3prdbhhlbw7t6lyvzlzyhrvhzax4q";
-// ==================================================================
+const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
+const metadataURI = process.env.REACT_APP_METADATA_URI;
 
 function App() {
   const [walletAddress, setWalletAddress] = useState(null);
